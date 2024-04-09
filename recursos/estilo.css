@@ -11,7 +11,7 @@ header {
 }
 
 .titulo {
-    text-align: center;
+    text-align: left;
 }
 
 /* Estilo para el pie de página */
@@ -85,8 +85,7 @@ section {
 }
 /*Barra de búsqueda*/
 #search {
-    margin-left: auto;
-    padding: 30px;
+    align:left
 }
 .tit{
     margin-top: 10%;

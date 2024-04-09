@@ -18,7 +18,6 @@ include("user_filter.php");
 <body>
     <header>
         <h1 class="titulo">Galería</h1>
-        <a href="logout.php"><img class="logout" width="30px" src="recursos/logout.png" alt="Cerrar sesión"></a>
     </header>
     <div class="contenedor">
         <section>
@@ -52,14 +51,29 @@ include("user_filter.php");
         </section>
         <aside>
             <?php
-            echo "Usuario: " . $_SESSION["usuario"] . "<br><hr>";
-            $SQL2 = "SELECT a.Biografía FROM artistas a INNER JOIN usuarios u ON a.ID_Artista = u.ID_Artista WHERE u.IDU = " . $_SESSION['IDU'];
-            $RS2 = mysqli_query($con, $SQL2);
-            $fila2 = mysqli_fetch_assoc($RS2);
-            echo "Biografía: " . $fila2['Biografía'];
+                echo "Usuario: ".$_SESSION["usuario"]."<br><hr>";
+                $SQL2="SELECT a.Biografía FROM artistas a INNER JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario WHERE a.ID_Usuario=".$_SESSION["IDU"];
+                $RS2=mysqli_query($con,$SQL2);
+                if($fila2=mysqli_fetch_assoc($RS2)){
+                    echo "Biografía: ".$fila2["Biografía"]."<br>";
+                }
+
+                echo "<div class='aside'><a href=editar_perfil.php><img width=20px src=recursos/edit.png></a></div><hr>";
+                echo "<table align=center><tr>";
+                echo "<tr><td><a href='publicar.php'>Nueva Publicación</a></td></tr>";
+                echo "<tr><td><a href='editar.php'>Editar Publicación</a></td></tr>";
+                echo "<tr><td><a href='eliminar.php'>Eliminar Publicación</a></td></tr>";
+                echo "</table>";
             ?>
         </aside>
     </div>
+    <footer>
+        <p>Galería Vicent Smith™ <a href="index.php"><img class="logout" width="30px" align="left" src="recursos/home.png" alt="Ir al Home"></a><a href="logout.php"><img class="logout" align="right" width="30px" src="recursos/logout.png" alt="Cerrar sesión"></a></p>
+	</footer>
+
 </body>
 
 </html>
+<?php
+mysqli_close($con);
+?>
