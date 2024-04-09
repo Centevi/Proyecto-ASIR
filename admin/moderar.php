@@ -61,7 +61,7 @@ if (!isset($_GET["id"])){
 		<table>
 		<tr><td>
 		<h2>ELIMINAR PUBLICACIÓN</h2>
-		<form  method="post" action="../eli.php">
+		<form  method="post" action="eli.php">
 					
 						
 			
@@ -84,4 +84,7 @@ mysqli_close($con);
 ?>
 </section>
 </body>
+<footer>
+<a href="../logout.php"><img class="logout" align="right" width="30px" src="../recursos/logout.png" alt="Cerrar sesión"></a>
+</footer>
 </html>
