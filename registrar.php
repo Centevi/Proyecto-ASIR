@@ -96,7 +96,7 @@ if (!isset($_POST["Registrarme"])) {
     $enpass = hash('sha256', $passf);
     $date = date('Y-m-d H:i:s');
 
-    $SQL = "INSERT INTO usuarios (id, Nombre, Correo, Contraseña, Tipo, Estado) VALUES ($id, '$nombre', '$correo', '$enpass', '$tipo', $estado)";
+    $SQL = "INSERT INTO usuarios (ID_Usuario, Nombre, Correo, Contraseña, Tipo_Usr, Estado) VALUES ($id, '$nombre', '$correo', '$enpass', '$tipo', $estado)";
     $SQL2 = "INSERT INTO solicitudes VALUES ($id_s, $id, '$date', '$tipo', $estado)";
 
     if (mysqli_query($con, $SQL) && mysqli_query($con, $SQL2)) {
