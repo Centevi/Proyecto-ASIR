@@ -1,19 +1,16 @@
-<!DOCTYPE html>
 <?php
 session_start();
-include ("con.php");
+include("con.php");
 
-if(isset($_GET["existe"]) && $_GET["existe"] == "si"){
+if (isset($_GET["existe"]) && $_GET["existe"] == "si") {
     echo '<script type="text/javascript">';
     echo 'window.alert("Lo siento, nombre de usuario en uso");';
     echo '</script>';
 }
 
-if(!isset($_POST["Registrarme"])){
-    $SQL="SELECT Nombre FROM usuarios";
-    $RS=mysqli_query($con,$SQL);
+if (!isset($_POST["Registrarme"])) {
 ?>
-
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -78,35 +75,31 @@ if(!isset($_POST["Registrarme"])){
 </body>
 
 </html>
-<?php 
-}else{
-    $id=rand(10000000, 99999999);
-    $id_s=rand(10000000, 99999999);
-    $tipo=$_POST["tipo"];
-    $estado=$_POST["estado"];
-    $correo=filter_var($_POST["correo"], FILTER_SANITIZE_STRING);
-    $passf=filter_var($_POST["contrasenya"], FILTER_SANITIZE_STRING);
-    $nombre=filter_var($_POST["nombre"], FILTER_SANITIZE_STRING);
+<?php
+} else {
+    $nombre = filter_var($_POST["nombre"], FILTER_SANITIZE_STRING);
+    $correo = filter_var($_POST["correo"], FILTER_SANITIZE_STRING);
+    $passf = filter_var($_POST["contrasenya"], FILTER_SANITIZE_STRING);
+    $tipo = $_POST["tipo"];
+    $estado = $_POST["estado"];
 
-    if(strlen($nombre) > 10){
-        echo "El nombre de usuario no puede tener más de 10 caracteres.";
-        exit();
-    }
+    $filter = "SELECT Nombre FROM usuarios WHERE Nombre='$nombre'";
+    $filterrs = mysqli_query($con, $filter);
 
-    $SQL="SELECT Nombre FROM usuarios WHERE Nombre='$nombre'";
-    $RS=mysqli_query($con,$SQL);
-    if(mysqli_num_rows($RS) > 0){
+    if (mysqli_num_rows($filterrs) > 0) {
         header('Location: registrar.php?existe=si');
         exit();
     }
 
-    $enpass=hash('sha256',$passf);
-    $date=date('Y-m-d H:i:s');
+    $id = rand(10000000, 99999999);
+    $id_s = rand(10000000, 99999999);
+    $enpass = hash('sha256', $passf);
+    $date = date('Y-m-d H:i:s');
 
-    $SQL= "INSERT INTO usuarios (id, Nombre, Correo, Contraseña, Tipo, Estado) VALUES ($id, '$nombre', '$correo', '$enpass', '$tipo', $estado)";
-    $SQL2= "INSERT INTO solicitudes VALUES ($id_s, $id, '$date', '$tipo', $estado)";
+    $SQL = "INSERT INTO usuarios (id, Nombre, Correo, Contraseña, Tipo, Estado) VALUES ($id, '$nombre', '$correo', '$enpass', '$tipo', $estado)";
+    $SQL2 = "INSERT INTO solicitudes VALUES ($id_s, $id, '$date', '$tipo', $estado)";
 
-    if(mysqli_query($con,$SQL) && mysqli_query($con,$SQL2)){ 
+    if (mysqli_query($con, $SQL) && mysqli_query($con, $SQL2)) {
         header('Location: index.php?o=ok');
         exit();
     } else {
@@ -115,4 +108,3 @@ if(!isset($_POST["Registrarme"])){
 }
 mysqli_close($con);
 ?>
-
