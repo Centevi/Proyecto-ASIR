@@ -82,7 +82,7 @@ $titulo=filter_var($_POST['titulo'], FILTER_SANITIZE_STRING);
 $descripcion=filter_var($_POST['descripcion'], FILTER_SANITIZE_STRING);
 $date=date('Y-m-d H:i:s');
 $SQL="INSERT INTO publicaciones VALUES ($id_publicacion, $id_usuario, '$titulo','$nombreCompleto','$date','$descripcion')";
-
+echo $SQL;
 if(mysqli_query($con,$SQL)){
     echo '<script type="text/javascript">
             window.location.href = "index.php?s=ok"

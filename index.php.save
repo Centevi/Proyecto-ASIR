@@ -1,5 +1,6 @@
 <?php
 session_start(); // Inicia la sesión
+$con = mysqli_connect("20.229.169.29","galeria","dDPYJcv!x$OoxEmt2","galeria");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,7 +35,6 @@ session_start(); // Inicia la sesión
     <div class="contenedor">
         <section>
         <?php
-include("con.php");
 if($_GET["o"]=="ok"){
     echo '<script type="text/javascript">';
     echo 'window.alert("Su cuenta esta siendo verificada, tendrá acceso en breves");';
@@ -49,6 +49,7 @@ $SQL ="SELECT * FROM publicaciones ORDER BY RAND()";
             if ($contador % 3 == 0) { 
                 echo '<tr>';
             }
+    
             echo '<td><a href="detalle.php?id='.$fila['ID_Publicación'].'"><img class="imga" src="' . $fila['Imagen'] . '" alt="Imagen"></a></td>';
     
             $contador++;
