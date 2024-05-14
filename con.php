@@ -1,7 +1,7 @@
 <?php
 //Inicio la sesión
 session_start();
-$con = mysqli_connect("20.229.169.29","pi_gal","X0nt4s3n1@","galeria");
+$con = mysqli_connect("XXXXXXXXXXXXXXXX","XXXXXXXXXXXXXXXXX","XXXXXXXXXXXXXXXXXXXXX","XXXXXXXXXXXX");
 
 // Verificar la conexión
 if (!$con) {
