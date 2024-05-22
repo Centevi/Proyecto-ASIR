@@ -15,7 +15,7 @@ $usuario=$_GET["usr"];
 
 <body>
     <header>
-        <h1 class="titulo"> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Galería &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;</h1>
+        <h1 class="titulo">Galería</h1>
         <a href="index.php"><img  class="logout" width=30px src="recursos/home.png"></a>
     </header>
     <div class="contenedor">

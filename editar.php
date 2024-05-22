@@ -34,7 +34,7 @@ if (!isset($_GET["id"])){
             echo '<tr>';
         }
 
-        echo '<td><a href=editar.php?id='.$fila['ID_Publicación'].'><img class=imga src="' . $fila['Imagen'] . '" alt="Imagen"></a></td>';
+        echo '<td><a href=editar.php?id='.$fila['ID_Publicación'].'><img class="imga" src="' . $fila['Imagen'] . '" alt="Imagen"></a></td>';
 
         $contador++;
 

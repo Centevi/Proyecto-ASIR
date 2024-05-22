@@ -35,7 +35,7 @@ include ("con.php");
 if(isset($_POST['buscar'])){
     $busqueda = filter_var($_POST["buscar"], FILTER_SANITIZE_STRING);
     $busqueda = str_replace(" ","%",$busqueda);
-    $SQL= "SELECT * FROM usuarios JOIN publicaciones ON usuarios.ID_Usuario = publicaciones.ID_Usuario WHERE usuarios.Nombre LIKE '%$busqueda%' OR publicaciones.Título LIKE '%$busqueda%'";
+    $SQL= "SELECT * FROM usuarios JOIN publicaciones ON usuarios.ID_Usuario = publicaciones.ID_Usuario WHERE usuarios.Nombre LIKE '%$busqueda%' OR publicaciones.Título LIKE '%$busqueda%' OR publicaciones.Descripción LIKE '%$busqueda%'";
     $RS=mysqli_query($con,$SQL);
     echo '<table align=center>';
     $contador = 0;
