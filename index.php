@@ -1,5 +1,6 @@
 <?php
 session_start(); // Inicia la sesión
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,7 +41,7 @@ if($_GET["o"]=="ok"){
     echo 'window.alert("Su cuenta esta siendo verificada, tendrá acceso en breves");';
     echo '</script>';
 }
-$SQL ="SELECT * FROM publicaciones ORDER BY RAND()";
+$SQL ="SELECT * FROM publicaciones ORDER BY RAND() LIMIT 15";
     $RS=mysqli_query($con,$SQL);
     echo '<table align=center>';
     $contador = 0;
